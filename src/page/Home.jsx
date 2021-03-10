@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import InputIP from '../components/InputIP'
 import Address from '../components/Address'
 import MapAddress from '../components/MapAddreess'
+import { AddressIpContext } from '../store/AddressIPContext'
 
 export default function Home() {
+
+    const { isMap } = useContext(AddressIpContext)
 
     return (
         <div id="home">
@@ -17,7 +20,7 @@ export default function Home() {
             </div>
             <Address />
             <div className="home-bottom">
-                <MapAddress />
+                { isMap && <MapAddress /> }
             </div>
         </div>
     )

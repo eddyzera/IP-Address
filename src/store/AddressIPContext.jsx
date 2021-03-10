@@ -1,16 +1,18 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import ipAddress from '../api/ipAddress'
 
 export const AddressIpContext = createContext()
 
 export default function AddressIpProvider ({ children }) {
 
-    const [latitude, setLatitude] = useState(0)
-    const [longitude, setLongetude] = useState(0)
+    const [latitude, setLatitude] = useState(1.28967)
+    const [longitude, setLongetude] = useState(103.85007)
     const [ipInput, setIpInput] = useState('')
+    const [isMap, setIsMap] = useState(false) 
 
     async function inputIp(value) {
         const result = await ipAddress(value)
+        setIsMap(true)
         setMap(result)
         setIpInput(result)
     }
@@ -30,7 +32,8 @@ export default function AddressIpProvider ({ children }) {
         longitude,
         inputIp,
         isp,
-        ip
+        ip,
+        isMap
     }
 
     return (
