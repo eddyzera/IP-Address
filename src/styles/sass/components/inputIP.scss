@@ -1,0 +1,34 @@
+#input_IP {
+    width: 500px;
+    display: flex;
+    border-radius: 12px;
+
+    input {
+        width: 90%;
+        padding: 1.1rem 1rem;
+        border: 1px solid $text-color-silver;
+        border-radius: 12px 0 0 12px;
+        color: $text-color-silver;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        width: 10%;
+        height: 54px;
+        border: none;
+        background: $blue;
+        border-radius: 0 12px 13px 0;
+
+        &:focus {
+            outline: none;
+        }
+        
+        svg {
+            font-size: 1.1rem;
+            color: $white;
+        }
+    }
+}
