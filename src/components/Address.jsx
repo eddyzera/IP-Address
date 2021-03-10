@@ -3,7 +3,7 @@ import { AddressIpContext } from '../store/AddressIPContext'
 
 export default function Address() {
 
-    const { ip, isp } = useContext(AddressIpContext)
+    const { ip, isp, location } = useContext(AddressIpContext)
 
     return (
         <div id="address">
@@ -14,11 +14,11 @@ export default function Address() {
                 </div>
                 <div className="box location">
                     <h2>Location</h2>
-                    <p>Mogi das Cruzes - SP</p>
+                    <p>{location.city} - {location.country}</p>
                 </div>
                 <div className="box timezone">
                     <h2>Timezone</h2>
-                    <p>UTC-05:00</p>
+                    <p>{location.timezone}</p>
                 </div>
                 <div className="box">
                     <h2>ISP</h2>

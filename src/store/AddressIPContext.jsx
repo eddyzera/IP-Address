@@ -5,36 +5,51 @@ export const AddressIpContext = createContext()
 
 export default function AddressIpProvider ({ children }) {
 
-    const [latitude, setLatitude] = useState(1.28967)
-    const [longitude, setLongetude] = useState(103.85007)
+    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongetude] = useState(0)
     const [ipInput, setIpInput] = useState('')
-    const [isMap, setIsMap] = useState(false) 
+    const [location, setLocation] = useState({
+        city: '', 
+        country: '', 
+        timezone: ''
+    })
+    const [isMap, setIsMap] = useState(false)
 
     async function inputIp(value) {
         const result = await ipAddress(value)
         setIsMap(true)
         setMap(result)
+        setLocationIP(result)
         setIpInput(result)
     }
 
 
-    async function setMap(value) {
+    function setMap(value) {
         const { location } = value
         setLatitude(location.lat)
         setLongetude(location.lng)
     }
 
+    function setLocationIP (value) {
+        setLocation({
+            city: value.location.city,
+            country: value.location.country,
+            timezone: value.location.timezone
+        })
+    }
 
     const { isp, ip } = ipInput
-
     const store = {
         latitude,
         longitude,
         inputIp,
         isp,
         ip,
-        isMap
+        isMap,
+        location
     }
+
+    console.log(ipInput.location)
 
     return (
         <AddressIpContext.Provider value={store}>
