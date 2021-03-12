@@ -5,8 +5,9 @@ import MapAddress from '../components/MapAddreess'
 import { AddressIpContext } from '../store/AddressIPContext'
 
 export default function Home() {
-
-    const { isMap } = useContext(AddressIpContext)
+    const {
+        locationMap,
+    } = useContext(AddressIpContext)
 
     return (
         <div id="home">
@@ -20,7 +21,10 @@ export default function Home() {
             </div>
             <Address />
             <div className="home-bottom">
-                { isMap && <MapAddress /> }
+                <MapAddress 
+                    lat={locationMap.lat} 
+                    lng={locationMap.lng} 
+                />
             </div>
         </div>
     )
